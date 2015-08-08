@@ -1,0 +1,17 @@
+<h2> Doctors List </h2>
+
+<% @doctors.each do |doctor| %>
+  <%= doctor.name %>
+  <%= link_to "Edit #{doctor.name}", edit_user_path(doctor) %>
+<% end %>
+
+<h2> Pets List </h2>
+
+<% @appointment_pets.each do |pet| %>
+  <%= pet.name %>
+  <%= pet.pet_type %>
+  <%= pet.breed %>
+  <%= pet.age %>
+  <%= pet.weight %>
+  <%= pet.date_of_last_visit %>
+<% end %>
