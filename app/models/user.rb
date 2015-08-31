@@ -20,12 +20,24 @@ class User < ActiveRecord::Base
     self.owner? ? User.where(role: 'doctor') : []
   end
 
+  def appointments
+    if self.role == 'doctor'
+      Appointment.where(doctor_id: self.id)
+    elsif self.role == 'customer'
+      Appointment.where(customer_id: self.id)
+    end
+  end
+
   def pets
     Pet.where(customer_id: self.id)
   end
 
   def pets_through_appointments
-    Pet.joins(:appointments).where(appointments: {doctor_id: self.id})
+    if self.role == 'doctor'
+      Pet.joins(:appointments).where(appointments: {doctor_id: self.id})
+    elsif self.role == 'customer'
+      Pet.joins(:appointments).where(appointments: {customer_id: self.id})
+    end
   end
 
 end

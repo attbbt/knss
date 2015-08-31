@@ -1,6 +1,5 @@
 <%= simple_form_for @doctor do |f| %>
   <%= f.input :name %>
-  <%= f.input :role %>
   <%= f.input :address %>
   <%= f.input :city %>
   <%= f.input :state %>
@@ -11,5 +10,4 @@
 
   <%= f.button :submit %>
 <% end %>
-<%= link_to "Listings", users_path %><br>
-
+<%= link_to "Listings", users_path %>

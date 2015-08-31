@@ -10,4 +10,8 @@ class Pet < ActiveRecord::Base
   has_many :appointments
   belongs_to :customer, class_name: "User"
 
+  def next_appointment
+    appointments.where(customer_id: self.customer_id).where("appointments.date_of_visit > ?",Date.current).first
+  end
+
 end
