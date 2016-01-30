@@ -36,8 +36,11 @@ class UsersController < ApplicationController
     @doctor = appointment_pets.find(:all)
   end
 
-
-
+  def destroy
+    appointment = @all_appointments.find_by_id(params[:id])
+    appointment.destroy
+    redirect_to :back
+  end
 
   def update
     @doctor = User.find(params[:id])

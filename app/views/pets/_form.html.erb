@@ -1,0 +1,45 @@
+<% if @pet.errors.any? %>
+  <div class="row">
+    <div class="alert alert-danger col-md-8 col-md-offset-2 left">
+      <h5>Please correct the following errors:</h5>
+      <ul>
+        <% @pet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+<div class="row well">
+  <div class="col-md-8 col-md-offset-2 left">
+    <%= form_for @pet do |f| %>
+      <div id="form-gap">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :'Pet Type' %>
+        <%= f.select :pet_type, options_for_select( %w[dog cat bird]) %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :Breed %>
+        <%= f.text_field :breed %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :Age %>
+        <%= f.text_field :age %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :Weight %>
+        <%= f.text_field :weight %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :'Date of Visit' %>
+        <%= f.text_field :date_of_last_visit, as: :date %>
+      </div>
+      <%= f.submit(@pet.new_record? ? "Create New Pet" : "Update Pet Info" , class: 'btn btn-success', id: 'button') %>
+      <%= link_to 'Back', :back, class: 'btn btn-success', id: 'button' %>
+
+    <% end %>
+  </div>
+</div>

@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
       Pet.joins(:appointments).where(appointments: {doctor_id: self.id})
     elsif self.role == 'customer'
       Pet.joins(:appointments).where(appointments: {customer_id: self.id})
+    elsif self.role == 'receptionist'
+      Pet.joins(:appointments).where(appointments: {customer_id: self.id})
     end
   end
 

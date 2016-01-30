@@ -29,34 +29,33 @@ The app should now be available at [http://localhost:3000/](http://localhost:300
 
 * Configuration
 1) To Log in as Owner, use these credentials:
- email   : sk1@vet.com
- password: Temp123  
+ email   : sri@vet.com
+ password: Temp123
+
 2) To Log in as Doctor, use these credentials:
- email   : sk1@vet.com
- password: Temp123  
- 
+
  email   : bob@vet.com
- password: Temp123  
- 
+ password: Temp123
+
  email   : susan@vet.com
- password: Temp123  
+ password: Temp123
 
 3) To Log in as Receptionist, use these credentials:
  email   : johnh@vet.com
- password: Temp123  
+ password: Temp123
 
 4) to Log in as Coustomer, use these credentials:
  email   : raja@vet.com
- password: Temp123 
- 
- *Testing
+ password: Temp123
+
+*Testing
 The app uses [RSpec](http://rspec.info/) for unit testing.
 Run the tests with:
 
 ```console
 $ rspec
 ```
- 
+
 
 
 

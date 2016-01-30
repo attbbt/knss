@@ -1,0 +1,34 @@
+<% if @app_create.errors.any? %>
+  <div class="row">
+    <div class="alert alert-danger col-md-8 col-md-offset-2 left">
+      <h5>Please correct the following errors:</h5>
+      <ul>
+        <% @app_create.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+<div class="row well">
+  <div class="col-md-4 col-md-offset-4 left">
+    <%= simple_form_for @app_create do |f| %>
+    <br><br>
+      <%= f.input :date_of_visit, as: :date %><br>
+      <%= f.input :customer_id do %>
+        <%= f.select :customer_id, User.where(role: :customer).map { |u| [u.name, u.id] }%><br>
+      <% end %>
+      <%= f.input :pet_id do %>
+        <%= f.select :pet_id, Pet.all.map { |pet| [pet.name, pet.id] }%><br>
+      <% end %>
+      <%= f.input :doctor_id do %>
+        <%= f.select :doctor_id, User.where(role: :doctor).map { |user| [user.name, user.id] }%><br>
+      <% end %>
+      <%= f.input :requires_reminder %><br>
+      <%= f.input :reason_for_visit%><br>
+
+      <%= f.submit(@app_create.new_record? ? 'Create Appointment' : 'Update Appointment' , class: 'btn btn-success', id: 'button') %>
+      <%= link_to 'Back', :back, class: 'btn btn-success', id: 'button' %>
+    <% end %>
+  </div>
+</div>

@@ -9,8 +9,8 @@ class AuthenticationsController < ApplicationController
 
     if params[:auth_params] && @current_user
       session[:current_user] = @current_user.id
-      flash[:success] = 'Successfully logged in'
-      redirect_to users_path
+        flash[:success] = "Successfully logged in"
+        redirect_to users_path
     else
       flash[:error] = 'Please check credentials'
       redirect_to new_authentication_path

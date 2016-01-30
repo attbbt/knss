@@ -1,0 +1,18 @@
+<header class="navbar navbar-fixed-top navbar-default">
+  <div class="container">
+    <%= link_to "Veterinary Practice", '', class: "btn btn-lg btn-success", id: "logo" %>
+    <% if session[:current_user] %>
+      <div class="nav-item btn btn-default btn-danger">
+        Logged in as: <%= c_user.name %> (<%= c_user.owner? ? 'owner' : c_user.role %>)
+      </div>
+      <div class='pull-right'>
+        <div class="nav-item btn btn-default btn-warning">
+          <%= link_to "Home", users_path, method: :get if session[:current_user] %>
+        </div>
+        <div class="nav-item btn btn-default btn-warning">
+          <%= link_to "Sign out", signout_path, :method => :delete if session[:current_user] %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</header>

@@ -1,13 +1,61 @@
-<%= simple_form_for @doctor do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :city %>
-  <%= f.input :state %>
-  <%= f.input :zip %>
-  <%= f.input :years_in_practice %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-
-  <%= f.button :submit %>
+<% if @doctor.errors.any? %>
+  <div class="row">
+    <div class="alert alert-danger col-md-8 col-md-offset-2 left">
+      <h5>Please correct the following errors:</h5>
+      <ul>
+        <% @doctor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 <% end %>
-<%= link_to "Listings", users_path %>
+<div class="row well">
+  <div class="col-md-8 col-md-offset-2 left">
+    <%= form_for @doctor do |f| %>
+      <div id="form-gap">
+        <%= f.label :role %>
+        <%= f.select :role, options_for_select( %w[doctor customer receptionist]) %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :city %>
+        <%= f.text_field :city %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :state %>
+        <%= f.text_field :state %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :zip %>
+        <%= f.text_field :zip %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :school_name %>
+        <%= f.text_field :school_name %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :years_in_practice %>
+        <%= f.text_field :years_in_practice %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+      <div id="form-gap">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <%= f.submit(@doctor.new_record? ? "Create User" : "Update doctor", class: 'btn btn-success', id: 'button') %>
+      <%= link_to 'Back', :back, class: 'btn btn-success', id: 'button' %>
+
+    <% end %>
+  </div>
+</div>

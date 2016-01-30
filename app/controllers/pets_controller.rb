@@ -1,5 +1,20 @@
 class PetsController < ApplicationController
 
+  def new
+    @pet = Pet.new
+  end
+
+  def create
+    @pet = Pet.new(pet_params)
+    if @pet.save
+      flash[:success] = "Successfully updated"
+      redirect_to users_path
+    else
+      flash[:error] = "Something went wrong"
+      render :new
+    end
+  end
+
   def edit
     @pet = Pet.find(params[:id])
   end
